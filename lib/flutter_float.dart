@@ -27,8 +27,6 @@ class FloatingViewState extends State<FloatingView>
   GlobalKey floatingKey = GlobalKey();
   AnimationController controller;
   Animation<double> animation;
-  double animStartX;
-  double animEndX;
   double width, height;
   double screenWidth, screenHeight;
 

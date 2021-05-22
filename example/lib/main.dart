@@ -26,13 +26,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,20 +40,11 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'You have pushed the button this many times:',
-                ),
-                Text(
-                  '$_counter',
-                  style: Theme.of(context).textTheme.display1,
+                  'this is flutter float',
                 ),
               ],
             ),
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'Increment',
-            child: Icon(Icons.add),
-          ), // This trailing comma makes auto-formatting nicer for build methods.
         ),
 
         FloatingView(
@@ -75,6 +59,20 @@ class _MyHomePageState extends State<MyHomePage> {
             radius: 40,
             backgroundImage: NetworkImage(
                 "https://img1.baidu.com/it/u=2196634016,1990933817&fm=26&fmt=auto&gp=0.jpg"),
+          ),
+        ),
+
+
+        FloatingView(
+          backEdge: false,
+          offset: Offset(0, 200),
+          child: Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.deepOrange,
+            ),
+            child: Text("我是可以移动的哦"),
           ),
         ),
       ],
