@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 ///悬浮按钮Demo
 class FloatingView extends StatefulWidget {
   FloatingView({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
     this.offset = Offset.infinite,
     this.backEdge = true,
     this.animTime = 500,
@@ -25,10 +25,10 @@ class FloatingViewState extends State<FloatingView>
     with SingleTickerProviderStateMixin {
   Offset offset = Offset.infinite;
   GlobalKey floatingKey = GlobalKey();
-  AnimationController controller;
-  Animation<double> animation;
-  double width, height;
-  double screenWidth, screenHeight;
+  late AnimationController controller;
+  Animation<double>? animation;
+  double? width, height;
+  double? screenWidth, screenHeight;
 
   @override
   void initState() {
@@ -38,8 +38,8 @@ class FloatingViewState extends State<FloatingView>
       vsync: this,
     );
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      width = floatingKey.currentContext.size.width;
-      height = floatingKey.currentContext.size.height;
+      width = floatingKey.currentContext?.size?.width ?? 0;
+      height = floatingKey.currentContext?.size?.height ?? 0;
       final size = MediaQuery.of(context).size;
       screenWidth = size.width;
       screenHeight = size.height;
@@ -70,16 +70,16 @@ class FloatingViewState extends State<FloatingView>
       onPanEnd: (details) {
         if (widget.backEdge) {
           double oldX = offset.dx;
-          if (offset.dx <= screenWidth / 2 - width / 2) {
+          if (offset.dx <= (screenWidth ?? 0) / 2 - (width ?? 0) / 2) {
             offset = Offset(0, offset.dy);
           } else {
-            offset = Offset(screenWidth - width, offset.dy);
+            offset = Offset((screenWidth ?? 0) - (width ?? 0), offset.dy);
           }
           double newX = offset.dx;
           animation = new Tween(begin: oldX, end: newX).animate(controller)
             ..addListener(() {
               setState(() {
-                offset = Offset(animation.value, offset.dy);
+                offset = Offset(animation?.value ?? 0, offset.dy);
               });
             });
           controller.reset();
@@ -98,21 +98,21 @@ class FloatingViewState extends State<FloatingView>
     if (offset.dx <= 0) {
       offset = Offset(0, offset.dy);
     }
-    if (offset.dx >= screenWidth - width) {
-      offset = Offset(screenWidth - width, offset.dy);
+    if (offset.dx >= (screenWidth ?? 0) - (width ?? 0)) {
+      offset = Offset((screenWidth ?? 0) - (width ?? 0), offset.dy);
     }
     if (offset.dy <= 0) {
       offset = Offset(offset.dx, 0);
     }
-    if (offset.dy >= screenHeight - height) {
-      offset = Offset(offset.dx, screenHeight - height);
+    if (offset.dy >= (screenHeight ?? 0) - (height ?? 0)) {
+      offset = Offset(offset.dx, (screenHeight ?? 0) - (height ?? 0));
     }
     return offset;
   }
 
   @override
   void dispose() {
-    controller?.dispose();
+    controller.dispose();
     super.dispose();
   }
 }

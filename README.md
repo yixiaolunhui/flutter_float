@@ -8,4 +8,4 @@ A new Flutter float.
 
 # Usage
     dependencies:
-      flutter_float: ^0.0.1
+      flutter_float: ^1.0.0

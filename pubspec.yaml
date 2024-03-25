@@ -1,6 +1,6 @@
 name: flutter_float
 description: flutter_float -Flutter float package
-version: 0.0.1
+version: 1.0.0
 author: yixiaolunhui dalong982242260@gmail.com
 #homepage: https://github.com/yixiaolunhui
 #repository: https://github.com/yixiaolunhui/flutter_float
@@ -8,8 +8,8 @@ homepage: http://localhost:8080
 repository: http://localhost:8080
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=2.12.0 <4.0.0"
+  flutter: ">=2.0.0"
 
 dependencies:
   flutter:
