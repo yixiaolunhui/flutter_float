@@ -10,10 +10,10 @@ class FloatingView extends StatefulWidget {
     this.animTime = 500,
   }) : super(key: key);
 
-  Widget child;
-  Offset offset;
-  bool backEdge;
-  int animTime;
+  final Widget child;
+  final Offset offset;
+  final bool backEdge;
+  final int animTime;
 
   @override
   State<StatefulWidget> createState() {
